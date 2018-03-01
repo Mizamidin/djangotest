@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %}
+Кітап категориялары
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">Категориялар</li>
+{% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>
+                Кітап категориялары
+            </th>
+            <th>
+                Сипаттамалары
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ category.description }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

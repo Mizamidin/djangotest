@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<table class="table">
+            <tr>
+                <th>Кітаптың аты</th>
+                <th>Шыққан жылы</th>
+            </tr>
+    {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.year|date:'D M Y' }}</td>
+                <td></td>
+            </tr>
+    {% endfor %}
+        </table>
+</table>
+</body>
+</html>
