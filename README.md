@@ -15,13 +15,13 @@ DATABASES = {
 }
 ```
 Одан кейін төмендегі коммандаларды орындап шығуларыңыз қажет:
-
+```python
 python manage.py migrate
 pythona manage.py makemigrations
 python manage.py migrate
 
 python manage.py createsuperuser
-
+```
 Проектіні қосып http://localhost:8000 тексеріп көріңіздер. Сізде бос экран шығады. Категорияларды деректер қорына енгізу үшін 
 http://localhost:8000/admin сілтемесі бойынша категорияға қатысты деректерді сақтаймыз. Енді басты бетті қайта ашсаңыздар 
 категориялар тізімі шығуы тиіс.
