@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -24,7 +24,7 @@
     {% for category in categories %}
         <tr>
             <td>
-                <a href = "#">{{ category.name }}</a>
+                <a href = "{% url 'book_list' category.id %}">{{ category.name }}</a>
             </td>
             <td>{{ category.description }}</td>
         </tr>
