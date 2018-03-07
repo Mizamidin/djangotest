@@ -19,6 +19,15 @@
             <th>
                 isbn
             </th>
+            <th>
+                Шыққан айы/жылы
+            </th>
+            <th>
+                Баспа
+            </th>
+            <th>
+                Авторлары
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +37,14 @@
                 {{ c.title }}
             </td>
             <td>{{ c.isbn }}</td>
+            <td>{{ c.date|date:"m Y" }}</td>
+            <td>{{ c.publisher.name }}</td>
+            <td>
+                {% for a in c.authors.all%}
+                    {{ a.firstname }} {{ a.lastname }}
+                    <br>
+                {% endfor %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
