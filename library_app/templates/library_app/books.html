@@ -1,23 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Books</title>
-</head>
-<body>
-<table class="table">
-            <tr>
-                <th>Кітаптың аты</th>
-                <th>Шыққан жылы</th>
-            </tr>
-    {% for book in books %}
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.year|date:'D M Y' }}</td>
-                <td></td>
-            </tr>
+{% extends 'base.html' %}
+
+{% block pagetitle %}
+    Категория кітаптары
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href = "{% url 'home' %}">Категориялар</a></li>
+    <li class="breadcrumb-item active">{{ category.name }}</li>
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Кітап аты
+            </th>
+            <th>
+                isbn
+            </th>
+            <th>
+                Шыққан айы/жылы
+            </th>
+            <th>
+                Баспа
+            </th>
+            <th>
+                Авторлары
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in category.books.all %}
+        <tr>
+            <td>
+                {{ c.title }}
+            </td>
+            <td>{{ c.isbn }}</td>
+            <td>{{ c.date|date:"m Y" }}</td>
+            <td>{{ c.publisher.name }}</td>
+            <td>
+                {% for a in c.authors.all%}
+                    {{ a.firstname }} {{ a.lastname }}
+                    <br>
+                {% endfor %}
+            </td>
+        </tr>
     {% endfor %}
-        </table>
+    </tbody>
 </table>
-</body>
-</html>
+
+{% endblock %}
