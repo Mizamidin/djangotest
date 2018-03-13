@@ -17,8 +17,25 @@
         <a class="navbar-brand" href="{% url 'home' %}">Кітапхана</a>
       </div>
 </nav>
-
+<div style="margin-left:20px;margin-top:20px">
 <div class="container">
+        <div class="col-sm-2">
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="">All books</a></li>
+          <li><a href="">All authors</a></li>
+          {% if user.is_authenticated %}
+     <li>User: {{ user.get_username }}</li>
+     <li><a href="">My Borrowed</a></li>
+     <li><a href="{% url 'logout'%}?next={{request.logout}}">Logout</a></li>   
+   {% else %}
+     <li><a href="{% url 'login'%}?next={{request.login}}">Login</a></li>   
+   {% endif %} 
+      </ul>
+      </div>
+     {% endblock %}
+      </div>
       <ol class="breadcrumb my-4">
         {% block breadcrumb %}
         {% endblock %}

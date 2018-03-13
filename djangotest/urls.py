@@ -19,5 +19,8 @@ from library_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('library/', include('library_app.urls')),
-    path('', views.home, name = "home")
+    path('', views.home, name = "home"),
+    path('', views.logout, name = "logout"),
+    path('', views.login, name = "login")
 ]
+
