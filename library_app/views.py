@@ -5,8 +5,19 @@ import datetime
 
 def home(request):
     book_categories = Category.objects.all()
+    time=datetime.datetime.now()
+    n_hour=time.hour
+    n_minute=time.minute
+    n_second=time.second
+    n_year=time.year
+    n_month=time.month
+    n_day=time.day
+    w_day=time.weekday
+    num_visits=request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits+1
+    
 
-    return render(request, 'home.html', {'categories':book_categories})
+    return render(request, 'home.html', {'categories':book_categories, 'num_visits':num_visits,'hour':n_hour,'minute':n_minute,'second':n_second,'year':n_year,'month':n_month,'day':n_day,'weekday':w_day})
 def logout(request):
     return render(request, 'logout.html')
 def login(request):

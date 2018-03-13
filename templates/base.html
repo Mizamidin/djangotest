@@ -19,9 +19,14 @@
 </nav>
 <div style="margin-left:20px;margin-top:20px">
 
+<p>Бүгін: {% if weekday == 6 %} Жексенбі{% endif %}{% if weekday == 5 %} Сенбі{% endif %}{% if weekday == 4 %} Жұма{% endif %}{% if weekday == 3 %} Бейсенбі{% endif %}{% if weekday == 2 %} Сарсенбі{% endif %}{% if weekday == 1 %} Сейсенбі{% endif %}{% if weekday == 0 %} Дуйсенбі{% endif %}.</p>
+<p>Дата: {% if day < 10 %}0{{ day }}{% else %}{{ day }}{% endif %}/{% if month < 10 %}0{{ month }}{% else %}{{ month }}{% endif %}/{% if year < 10 %}0{{ year }}{% else %}{{ year }}{% endif %}</p>
+<p>Уақыт: {% if hour < 10 %}0{{ hour }}{% else %}{{ hour }}{% endif %}:{% if minute < 10 %}0{{ minute }}{% else %}{{ minute }}{% endif %}:{% if second < 10 %}0{{ second }}{% else %}{{ second }}{% endif %}</p>
+<p>Сіз бұл парақшада ( {{ num_visits }} ) рет болдыңыз.</p>
+
 <div class="container">
         <div class="col-sm-2">
-      {% block sidebar %}
+              {% block sidebar %}
       <ul class="sidebar-nav">
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="">All books</a></li>
@@ -33,6 +38,7 @@
    {% else %}
      <li><a href="{% url 'login'%}?next={{request.login}}">Login</a></li>   
    {% endif %} 
+
       </ul>
       </div>
      {% endblock %}
