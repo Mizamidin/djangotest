@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from library_app.models import Category, Book, Publisher, Author
+import datetime
 # Create your views here.
 
 def home(request):
     book_categories = Category.objects.all()
+
     return render(request, 'home.html', {'categories':book_categories})
 def logout(request):
     return render(request, 'logout.html')
